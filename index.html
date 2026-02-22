@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kelvin Kibiru — Full Stack Developer & CEO of Spectre</title>
+  <meta name="description" content="Portfolio of Kelvin Kibiru — Multi-Platform Developer, finalising Computer Science at University of Embu, and Founder & CEO of Spectre." />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Devicon (tech stack icons) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css" />
+</head>
+<body>
+
+  <!-- Animated background -->
+  <div class="bg-glow">
+    <span></span><span></span><span></span>
+  </div>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">Kibiru <span>Kelvin</span></a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="active">About</a>
+        <a href="assets/pages/projects.html">Projects</a>
+        <a href="assets/pages/contact.html">Contact</a>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:.75rem;">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="container hero-inner">
+
+      <!-- Text -->
+      <div class="hero-text">
+        <p class="hero-greeting">Software Developer | Founder of Spectre</p>
+        <h1 class="hero-title">
+          Hi, I'm <span class="gradient">Kibiru Kelvin</span>
+        </h1>
+        <p class="hero-typed-line">I'm a <span id="typedText" class="gradient"></span><span class="typed-cursor">|</span></p>
+        <p class="hero-desc">
+            I design and develop high-performance software products. Available for hire and open to collaborations.
+        </p>
+        <div class="hero-buttons">
+          <a href="assets/pages/projects.html" class="btn btn-primary">
+            <i class="fas fa-rocket"></i> View Projects
+          </a>
+          <a href="assets/pages/contact.html" class="btn btn-outline">
+            <i class="fas fa-envelope"></i> Hire Me
+          </a>
+          <a href="assets/Kelvin_Kibiru_CV.pdf" class="btn btn-outline" download>
+            <i class="fas fa-download"></i> Download CV
+          </a>
+        </div>
+      </div>
+
+      <!-- Image -->
+      <div class="hero-image-wrapper">
+        <div class="hero-image-frame">
+          <img src="assets/kelvin.jpeg" alt="Kelvin Kibiru — professional portrait" />
+        </div>
+        <div class="hero-image-ring"></div>
+        <span class="float-badge"><i class="fas fa-code"></i> Full Stack Dev</span>
+        <span class="float-badge"><i class="fas fa-graduation-cap"></i> CS Student</span>
+        <span class="float-badge"><i class="fas fa-briefcase"></i> CEO, Spectre</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="reveal">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">Full Stack Developer &bull; Mobile &amp; Web Engineer &bull; Founder &amp; CEO of Spectre &bull; Computer Science, University of Embu &bull; Trained via ALX Africa &amp; professional bootcamps</p>
+      </div>
+
+      <!-- Interactive Skill Path -->
+      <div class="skill-path">
+
+        <!-- Node 1 -->
+        <div class="path-node reveal" data-active="false" onclick="this.classList.toggle('expanded')">
+          <div class="path-dot"><i class="fas fa-laptop-code"></i></div>
+          <div class="path-line"></div>
+          <div class="path-card glass-card">
+            <h4>Frontend Development</h4>
+            <div class="path-tags">
+              <span class="tag">React</span>
+              <span class="tag">Next.js</span>
+              <span class="tag">HTML5</span>
+              <span class="tag">CSS3</span>
+              <span class="tag">Tailwind</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">WordPress</span>
+            </div>
+            <p class="path-detail">Building responsive, performant UIs with modern frameworks and pixel-perfect design systems.</p>
+          </div>
+        </div>
+
+        <!-- Node 2 -->
+        <div class="path-node reveal" onclick="this.classList.toggle('expanded')">
+          <div class="path-dot"><i class="fas fa-server"></i></div>
+          <div class="path-line"></div>
+          <div class="path-card glass-card">
+            <h4>Backend &amp; Payments</h4>
+            <div class="path-tags">
+              <span class="tag">Node.js</span>
+              <span class="tag">Firebase</span>
+              <span class="tag">Supabase</span>
+              <span class="tag">Daraja API</span>
+              <span class="tag">Mpesa Express</span>
+              <span class="tag">REST APIs</span>
+            </div>
+            <p class="path-detail">Server-side logic, authentication, payment integrations, and scalable cloud infrastructure.</p>
+          </div>
+        </div>
+
+        <!-- Node 3 -->
+        <div class="path-node reveal" onclick="this.classList.toggle('expanded')">
+          <div class="path-dot"><i class="fas fa-mobile-alt"></i></div>
+          <div class="path-line"></div>
+          <div class="path-card glass-card">
+            <h4>Mobile Development</h4>
+            <div class="path-tags">
+              <span class="tag">Kotlin</span>
+              <span class="tag">React Native</span>
+              <span class="tag">Java</span>
+              <span class="tag">Android</span>
+            </div>
+            <p class="path-detail">Cross-platform and native Android app development with modern architecture patterns.</p>
+          </div>
+        </div>
+
+        <!-- Node 4 -->
+        <div class="path-node reveal" onclick="this.classList.toggle('expanded')">
+          <div class="path-dot"><i class="fas fa-database"></i></div>
+          <div class="path-line"></div>
+          <div class="path-card glass-card">
+            <h4>Database &amp; Cloud</h4>
+            <div class="path-tags">
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">SQL</span>
+              <span class="tag">Firebase DB</span>
+              <span class="tag">Supabase DB</span>
+            </div>
+            <p class="path-detail">Schema design, real-time databases, and cloud-hosted data solutions.</p>
+          </div>
+        </div>
+
+        <!-- Node 5 -->
+        <div class="path-node reveal" onclick="this.classList.toggle('expanded')">
+          <div class="path-dot"><i class="fas fa-robot"></i></div>
+          <div class="path-line"></div>
+          <div class="path-card glass-card">
+            <h4>AI &amp; Automation <span class="tag" style="font-size:.65rem;margin-left:.35rem;">ALX</span></h4>
+            <div class="path-tags">
+              <span class="tag">Prompt Engineering</span>
+              <span class="tag">LLMs</span>
+              <span class="tag">Virtual Assistant</span>
+              <span class="tag">Workflow Automation</span>
+            </div>
+            <p class="path-detail">Certified via ALX Africa — leveraging AI tools and automation for productivity.</p>
+          </div>
+        </div>
+
+        <!-- Node 6 -->
+        <div class="path-node reveal" onclick="this.classList.toggle('expanded')">
+          <div class="path-dot"><i class="fas fa-bullhorn"></i></div>
+          <div class="path-line"></div>
+          <div class="path-card glass-card">
+            <h4>Marketing &amp; Design</h4>
+            <div class="path-tags">
+              <span class="tag">Meta Ads</span>
+              <span class="tag">Social Media Marketing</span>
+              <span class="tag">Canva</span>
+              <span class="tag">Brand Strategy</span>
+            </div>
+            <p class="path-detail">Data-driven digital campaigns, creative graphics, and brand identity development.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="path-hint reveal"><i class="fas fa-hand-pointer"></i> Tap any skill to expand details</p>
+    </div>
+  </section>
+
+  <!-- ===================== TECH STACK ===================== -->
+  <section class="stack-section" id="stack">
+    <div class="container">
+      <div class="reveal">
+        <h2 class="section-title">Tech Stack</h2>
+        <p class="section-subtitle">Languages, frameworks, and tools I work with.</p>
+      </div>
+
+      <div class="stack-grid reveal">
+        <div class="glass-card stack-item">
+          <i class="devicon-wordpress-plain"></i>
+          <span>WordPress</span>
+        </div>
+        <div class="glass-card stack-item">
+          <i class="devicon-html5-plain"></i>
+          <span>HTML5</span>
+        </div>
+        <div class="glass-card stack-item">
+          <i class="devicon-css3-plain"></i>
+          <span>CSS3</span>
+        </div>
+        <div class="glass-card stack-item">
+          <i class="devicon-tailwindcss-original"></i>
+          <span>Tailwind CSS</span>
+        </div>
+        <div class="glass-card stack-item">
+          <i class="devicon-javascript-plain"></i>
+          <span>JavaScript</span>
+        </div>
+        <div class="glass-card stack-item">
+          <i class="devicon-nodejs-plain"></i>
+          <span>Node.js</span>
+        </div>
+        <div class="glass-card stack-item">
+          <i class="devicon-supabase-plain"></i>
+          <span>Supabase</span>
+        </div>
+        <div class="glass-card stack-item">
+          <i class="devicon-firebase-plain"></i>
+          <span>Firebase</span>
+        </div>
+        <div class="glass-card stack-item">
+          <i class="devicon-nextjs-plain"></i>
+          <span>Next.js</span>
+        </div>
+        <div class="glass-card stack-item">
+          <i class="devicon-kotlin-plain"></i>
+          <span>Kotlin</span>
+        </div>
+        <div class="glass-card stack-item">
+          <i class="devicon-react-original"></i>
+          <span>React Native</span>
+        </div>
+        <div class="glass-card stack-item">
+          <i class="devicon-java-plain"></i>
+          <span>Java Mobile</span>
+        </div>
+        <div class="glass-card stack-item">
+          <i class="fas fa-money-bill-wave"></i>
+          <span>Daraja API (Mpesa)</span>
+        </div>
+        <div class="glass-card stack-item">
+          <i class="fab fa-facebook"></i>
+          <span>Meta Ads</span>
+        </div>
+        <div class="glass-card stack-item">
+          <i class="fas fa-bullhorn"></i>
+          <span>Social Media Marketing</span>
+        </div>
+        <div class="glass-card stack-item">
+          <i class="devicon-canva-original"></i>
+          <span>Canva</span>
+        </div>
+        <div class="glass-card stack-item">
+          <i class="fas fa-robot"></i>
+          <span>AI / Prompt Engineering (ALX)</span>
+        </div>
+        <div class="glass-card stack-item">
+          <i class="fas fa-headset"></i>
+          <span>Virtual Assistant (ALX)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SPECTER ===================== -->
+  <section class="specter-section" id="specter">
+    <div class="container">
+      <div class="reveal">
+        <h2 class="section-title">Spectre</h2>
+        <p class="section-subtitle">The tech company I founded and lead.</p>
+      </div>
+
+      <div class="glass-card specter-card reveal">
+        <div class="specter-icon">S</div>
+        <div class="specter-info">
+          <h3>Founder & CEO — Spectre</h3>
+          <p>
+            Spectre is a forward-thinking tech company specializing in web development, SaaS products, and custom 
+            software solutions. We help startups, SMEs, and organizations transform their ideas into powerful digital 
+            products. Our team blends creativity with engineering precision to deliver results that matter.
+          </p>
+          <p style="font-size:.95rem;color:var(--text-muted);margin-bottom:.5rem;">
+            <i class="fas fa-envelope" style="color:var(--accent);margin-right:.5rem;"></i> spectre.tech.limited@gmail.com
+          </p>
+          <a href="#" class="btn btn-primary" target="_blank" rel="noopener">
+            <i class="fas fa-external-link-alt"></i> Visit Spectre Website
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 <span>Kelvin Kibiru</span> | Full Stack Developer &amp; CEO of Spectre</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
