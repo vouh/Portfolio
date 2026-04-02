@@ -620,6 +620,11 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
   color: #fff;
   flex-shrink: 0;
 }
+.specter-icon img {
+  width: 72%;
+  height: 72%;
+  object-fit: contain;
+}
 .specter-info { flex: 1; min-width: 280px; }
 .specter-info h3 {
   font-family: var(--font-heading);

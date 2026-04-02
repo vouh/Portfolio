@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const hamburger    = document.getElementById('hamburger');
   const navLinks     = document.getElementById('navLinks');
   const contactForm  = document.getElementById('contactForm');
+  const spectreWebsiteBtn = document.getElementById('spectreWebsiteBtn');
 
   /* =============================================
      1. THEME TOGGLE (Dark / Light)
@@ -182,6 +183,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     setTimeout(typeLoop, 800);
+  }
+
+  /* =============================================
+     9. SPECTRE WEBSITE BUTTON — maintenance prompt
+     ============================================= */
+  if (spectreWebsiteBtn) {
+    spectreWebsiteBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('We are currently updating our site. Check back soon.');
+    });
   }
 
 });
