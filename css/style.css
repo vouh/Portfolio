@@ -47,6 +47,7 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.7;
+  overflow-y: scroll;
   overflow-x: hidden;
   transition: background var(--transition), color var(--transition);
 }
@@ -122,6 +123,12 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
   background: rgba(122,170,206,.15);
   color: var(--highlight);
   border: 1px solid rgba(156,213,255,.2);
+}
+
+[data-theme="light"] .tag {
+  color: #1f5a8a;
+  background: rgba(53, 88, 114, .12);
+  border-color: rgba(53, 88, 114, .25);
 }
 
 /* ---------- animated background ---------- */
@@ -261,6 +268,7 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
   display: flex;
   align-items: center;
   padding-top: var(--nav-height);
+  overflow: hidden;
 }
 .hero-inner {
   display: grid;
@@ -268,7 +276,12 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
   gap: 3rem;
   align-items: center;
 }
-.hero-text { max-width: 600px; }
+.hero-text {
+  max-width: 600px;
+  overflow: hidden;
+  width: 100%;
+  min-width: 0;
+}
 .hero-greeting {
   font-size: 1rem;
   font-weight: 600;
@@ -297,6 +310,12 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
   margin-bottom: 1rem;
   color: var(--text-muted);
   min-height: 2rem;
+  overflow: hidden;
+  max-width: 100%;
+  width: 100%;
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 .typed-cursor {
   font-weight: 300;
@@ -837,15 +856,23 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid transparent;
     transition: all var(--transition);
+    color: var(--text);
   }
   [data-theme="light"] .nav-links a {
-    background: rgba(0, 0, 0, 0.03);
+    background: rgba(53, 88, 114, 0.08);
+    color: #1a2d3d;
   }
   .nav-links a:hover, .nav-links a.active {
     background: rgba(122, 170, 206, 0.15);
     border: 1px solid rgba(156, 213, 255, 0.2);
     color: var(--highlight);
     transform: translateY(-2px);
+  }
+  [data-theme="light"] .nav-links a:hover,
+  [data-theme="light"] .nav-links a.active {
+    background: rgba(53, 88, 114, 0.2);
+    border-color: rgba(53, 88, 114, 0.35);
+    color: #0f4a7a;
   }
   .nav-links a::after { display: none; } /* Remove underline effect on mobile */
   
@@ -897,12 +924,25 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
   .container { width: 92%; }
   
   /* Hero */
+  .hero {
+    background: linear-gradient(135deg, rgba(11, 26, 40, 0.4), rgba(17, 34, 51, 0.4)), url('../assets/images/kelvin.jpeg') center/cover no-repeat;
+    background-attachment: fixed;
+  }
+  .hero-inner {
+    gap: 0;
+  }
   .hero-title { font-size: 1.6rem; }
-  .hero-typed-line { font-size: 1rem; min-height: 2.5rem; }
+  .hero-typed-line { font-size: 1rem; min-height: 2.5rem; max-width: 100%; overflow: hidden; }
   .hero-desc { font-size: 0.9rem; }
-  .hero-buttons { flex-direction: column; width: 100%; }
-  .hero-buttons .btn { width: 100%; justify-content: center; }
-  .hero-image-frame { height: 320px; }
+  .hero-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; width: 100%; }
+  .hero-buttons .btn { padding: 0.5rem 1rem; font-size: 0.8rem; }
+  .hero-buttons .btn:nth-child(3) { grid-column: 1 / -1; justify-self: center; }
+  .hero-image-wrapper { display: none; }
+  .hero-image-frame { display: none; }
+  [data-theme="light"] .hero {
+    background: linear-gradient(135deg, rgba(240, 245, 250, 0.35), rgba(255, 255, 255, 0.35)), url('../assets/images/kelvin.jpeg') center/cover no-repeat;
+    background-attachment: fixed;
+  }
   
   /* Sections */
   .about-section, .stack-section, .specter-section { padding: 3rem 0; }
@@ -911,6 +951,7 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
   /* Spectre Card */
   .specter-card { padding: 1.5rem; border-radius: 16px; }
   .specter-icon { width: 70px; height: 70px; font-size: 1.5rem; border-radius: 16px; }
+  .specter-info { min-width: 0; }
   .specter-info h3 { font-size: 1.3rem; }
   .specter-info p { font-size: 0.95rem; }
   
