@@ -772,18 +772,166 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
 }
 
 /* ============================================
+   QUICK CONTACT MODAL
+   ============================================ */
+.quick-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 12, 20, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 1400;
+}
+.quick-modal {
+  width: min(520px, 100%);
+  background: linear-gradient(155deg, rgba(13, 29, 44, 0.95), rgba(27, 57, 83, 0.94));
+  border: 1px solid rgba(156, 213, 255, 0.35);
+  border-radius: 18px;
+  box-shadow: 0 24px 65px rgba(0, 0, 0, 0.45);
+  padding: 1.35rem 1.35rem 1.2rem;
+  position: relative;
+}
+.quick-modal h3 {
+  font-family: var(--font-heading);
+  margin-bottom: 0.45rem;
+  font-size: 1.3rem;
+}
+.quick-modal p {
+  color: #d2e6f6;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+.quick-modal-links {
+  display: grid;
+  gap: 0.7rem;
+}
+.quick-modal-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: rgba(122, 170, 206, 0.15);
+  border: 1px solid rgba(156, 213, 255, 0.25);
+  color: #f1f8ff;
+  border-radius: 12px;
+  padding: 0.7rem 0.85rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+.quick-modal-links a:hover {
+  background: rgba(122, 170, 206, 0.3);
+  transform: translateY(-2px);
+}
+.quick-modal-close {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.45rem;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid rgba(156, 213, 255, 0.3);
+  background: rgba(156, 213, 255, 0.08);
+  color: #dff1ff;
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+[data-theme="light"] .quick-modal-overlay {
+  background: rgba(16, 32, 48, 0.48);
+}
+[data-theme="light"] .quick-modal {
+  background: linear-gradient(155deg, rgba(247, 252, 255, 0.98), rgba(227, 239, 248, 0.96));
+  border: 1px solid rgba(53, 88, 114, 0.28);
+  box-shadow: 0 18px 55px rgba(14, 37, 54, 0.24);
+}
+[data-theme="light"] .quick-modal p {
+  color: #2b4e68;
+}
+[data-theme="light"] .quick-modal-links a {
+  background: rgba(53, 88, 114, 0.1);
+  border-color: rgba(53, 88, 114, 0.2);
+  color: #173650;
+}
+
+/* ============================================
+   GLOBAL WHATSAPP FLOAT BUTTON
+   ============================================ */
+.whatsapp-float {
+  position: fixed;
+  right: 1.15rem;
+  bottom: 1.15rem;
+  z-index: 1300;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 0.95rem;
+  border-radius: 999px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #25d366, #1ea952);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.46), 0 0 0 1px rgba(37, 211, 102, 0.22);
+  transition: var(--transition);
+}
+.whatsapp-float i {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+.whatsapp-float-text {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.whatsapp-float:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 18px 36px rgba(37, 211, 102, 0.58), 0 0 0 1px rgba(37, 211, 102, 0.35);
+}
+
+@media (max-width: 480px) {
+  .whatsapp-float {
+    right: 0.85rem;
+    bottom: 0.85rem;
+    padding: 0.72rem 0.82rem;
+  }
+  .whatsapp-float-text {
+    display: none;
+  }
+}
+
+/* ============================================
    FOOTER
    ============================================ */
 .footer {
   padding: 2rem 0;
   text-align: center;
   border-top: 1px solid var(--glass-border);
+  background: linear-gradient(180deg, rgba(53, 88, 114, 0.08), rgba(122, 170, 206, 0.02));
+  box-shadow: inset 0 8px 30px rgba(122, 170, 206, 0.08), 0 -10px 35px rgba(122, 170, 206, 0.08);
 }
 .footer p {
   color: var(--text-muted);
   font-size: .9rem;
 }
 .footer span { color: var(--accent); font-weight: 600; }
+.footer .footer-main {
+  font-size: 0.95rem;
+  letter-spacing: 0.2px;
+  text-shadow: 0 0 16px rgba(156, 213, 255, 0.2);
+}
+.footer .footer-date {
+  margin-top: 0.35rem;
+  font-size: 0.84rem;
+  color: var(--highlight);
+  opacity: 0.95;
+  text-shadow: 0 0 14px rgba(156, 213, 255, 0.26);
+}
+
+[data-theme="light"] .footer {
+  background: linear-gradient(180deg, rgba(53, 88, 114, 0.06), rgba(122, 170, 206, 0.02));
+  box-shadow: inset 0 6px 22px rgba(53, 88, 114, 0.08), 0 -6px 22px rgba(122, 170, 206, 0.09);
+}
 
 /* ============================================
    SCROLL REVEAL ANIMATIONS
@@ -930,8 +1078,29 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
   
   /* Hero */
   .hero {
-    background: linear-gradient(135deg, rgba(11, 26, 40, 0.4), rgba(17, 34, 51, 0.4)), url('../assets/images/kelvin.jpeg') center/cover no-repeat;
+    background: linear-gradient(135deg, rgba(8, 20, 33, 0.76), rgba(11, 29, 45, 0.68)), url('../assets/images/kelvin.jpeg') center/cover no-repeat;
     background-attachment: fixed;
+  }
+  .hero-text {
+    background: rgba(8, 18, 30, 0.46);
+    border: 1px solid rgba(156, 213, 255, 0.2);
+    border-radius: 16px;
+    padding: 0.9rem 0.8rem 1rem;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+  }
+  .hero-greeting,
+  .hero-title,
+  .hero-typed-line,
+  .hero-desc {
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.55);
+  }
+  .hero-greeting { color: #bde5ff; }
+  .hero-typed-line { color: #d9edff; }
+  .hero-desc { color: #e5f2fd; }
+  .hero-buttons .btn-outline {
+    background: rgba(12, 30, 46, 0.55);
+    color: #d2ebff;
+    border-color: #8ec8ee;
   }
   .hero-inner {
     gap: 0;
@@ -945,8 +1114,17 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
   .hero-image-wrapper { display: none; }
   .hero-image-frame { display: none; }
   [data-theme="light"] .hero {
-    background: linear-gradient(135deg, rgba(240, 245, 250, 0.35), rgba(255, 255, 255, 0.35)), url('../assets/images/kelvin.jpeg') center/cover no-repeat;
+    background: linear-gradient(135deg, rgba(19, 41, 59, 0.58), rgba(34, 65, 89, 0.5)), url('../assets/images/kelvin.jpeg') center/cover no-repeat;
     background-attachment: fixed;
+  }
+  [data-theme="light"] .hero-text {
+    background: rgba(15, 33, 50, 0.38);
+  }
+  [data-theme="light"] .hero-greeting,
+  [data-theme="light"] .hero-typed-line,
+  [data-theme="light"] .hero-desc,
+  [data-theme="light"] .hero-title {
+    color: #eef8ff;
   }
   
   /* Sections */

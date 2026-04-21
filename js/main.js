@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks     = document.getElementById('navLinks');
   const contactForm  = document.getElementById('contactForm');
   const spectreWebsiteBtn = document.getElementById('spectreWebsiteBtn');
+  const contactQuickHelpBtn = document.getElementById('contactQuickHelpBtn');
 
   /* =============================================
      1. THEME TOGGLE (Dark / Light)
@@ -186,13 +187,107 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =============================================
-     9. SPECTRE WEBSITE BUTTON — maintenance prompt
+     9. CONTACT MODAL — quick help prompt
      ============================================= */
-  if (spectreWebsiteBtn) {
-    spectreWebsiteBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      alert('We are currently updating our site. Check back soon.');
+  function openQuickContactModal(event) {
+    if (event) event.preventDefault();
+
+    const existing = document.getElementById('quickContactModalOverlay');
+    if (existing) existing.remove();
+
+    const modalOverlay = document.createElement('div');
+    modalOverlay.id = 'quickContactModalOverlay';
+    modalOverlay.className = 'quick-modal-overlay';
+    modalOverlay.innerHTML = `
+      <div class="quick-modal" role="dialog" aria-modal="true" aria-labelledby="quickModalTitle">
+        <button class="quick-modal-close" aria-label="Close modal">&times;</button>
+        <h3 id="quickModalTitle">Quick Contact</h3>
+        <p>For faster replies, contact via email or phone:</p>
+        <div class="quick-modal-links">
+          <a href="mailto:peterkelvinkibiru1532@gmail.com"><i class="fas fa-envelope"></i> peterkelvinkibiru1532@gmail.com</a>
+          <a href="mailto:spectretechlimited@gmail.com"><i class="fas fa-envelope-open-text"></i> spectretechlimited@gmail.com</a>
+          <a href="tel:+254714516132"><i class="fas fa-phone"></i> 0714516132</a>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modalOverlay);
+    document.body.style.overflow = 'hidden';
+
+    const closeModal = () => {
+      modalOverlay.remove();
+      document.body.style.overflow = '';
+    };
+
+    modalOverlay.querySelector('.quick-modal-close').addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) closeModal();
+    });
+    document.addEventListener('keydown', function onEsc(e) {
+      if (e.key === 'Escape' && document.getElementById('quickContactModalOverlay')) {
+        closeModal();
+        document.removeEventListener('keydown', onEsc);
+      }
     });
   }
+
+  if (spectreWebsiteBtn) {
+    spectreWebsiteBtn.addEventListener('click', openQuickContactModal);
+  }
+
+  if (contactQuickHelpBtn) {
+    contactQuickHelpBtn.addEventListener('click', openQuickContactModal);
+  }
+
+  // Always remind on contact page for faster replies.
+  if (contactForm) {
+    setTimeout(() => {
+      openQuickContactModal();
+    }, 650);
+  }
+
+  /* =============================================
+     10. GLOBAL WHATSAPP FLOAT BUTTON
+     ============================================= */
+  const whatsappAnchor = document.createElement('a');
+  whatsappAnchor.href = 'https://wa.me/254714516132';
+  whatsappAnchor.target = '_blank';
+  whatsappAnchor.rel = 'noopener';
+  whatsappAnchor.className = 'whatsapp-float';
+  whatsappAnchor.setAttribute('aria-label', 'Chat on WhatsApp');
+  whatsappAnchor.innerHTML = `
+    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    <span class="whatsapp-float-text">WhatsApp</span>
+  `;
+  document.body.appendChild(whatsappAnchor);
+
+  /* =============================================
+     11. DYNAMIC FOOTER — year + live date/time
+     ============================================= */
+  const footerYear = document.getElementById('footerYear');
+  const footerDateTime = document.getElementById('footerDateTime');
+
+  function updateFooterDateTime() {
+    const now = new Date();
+    const dayNumber = now.getDate();
+    const weekday = now.toLocaleDateString('en-GB', { weekday: 'long' });
+    const year = now.getFullYear();
+    const time = now.toLocaleTimeString('en-GB', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+
+    if (footerYear) {
+      footerYear.textContent = String(year);
+    }
+
+    if (footerDateTime) {
+      footerDateTime.textContent = `${dayNumber} ${weekday} ${year} | ${time}`;
+    }
+  }
+
+  updateFooterDateTime();
+  setInterval(updateFooterDateTime, 1000);
 
 });
