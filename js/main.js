@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const hamburger    = document.getElementById('hamburger');
   const navLinks     = document.getElementById('navLinks');
   const contactForm  = document.getElementById('contactForm');
-  const spectreWebsiteBtn = document.getElementById('spectreWebsiteBtn');
   const contactQuickHelpBtn = document.getElementById('contactQuickHelpBtn');
 
   /* =============================================
@@ -229,10 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.removeEventListener('keydown', onEsc);
       }
     });
-  }
-
-  if (spectreWebsiteBtn) {
-    spectreWebsiteBtn.addEventListener('click', openQuickContactModal);
   }
 
   if (contactQuickHelpBtn) {
