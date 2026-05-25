@@ -15,6 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactForm  = document.getElementById('contactForm');
   const contactQuickHelpBtn = document.getElementById('contactQuickHelpBtn');
 
+    /* =============================================
+      EmailJS configuration
+      Replace these with your actual EmailJS IDs.
+      ============================================= */
+    const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
+    const EMAILJS_TEMPLATE_ID = 'YOUR_CONTACT_TEMPLATE_ID';
+    const EMAILJS_AUTOREPLY_TEMPLATE_ID = 'YOUR_AUTOREPLY_TEMPLATE_ID';
+
   /* =============================================
      1. THEME TOGGLE (Dark / Light)
      ============================================= */
@@ -104,26 +112,54 @@ document.addEventListener('DOMContentLoaded', () => {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
+      if (typeof emailjs === 'undefined') {
+        alert('Email service is not available yet. Please check the EmailJS script include.');
+        return;
+      }
+
       const btn = contactForm.querySelector('button[type="submit"]');
       const originalHTML = btn.innerHTML;
+      const formData = new FormData(contactForm);
+      const contactParams = {
+        name: String(formData.get('name') || '').trim(),
+        email: String(formData.get('email') || '').trim(),
+        title: String(formData.get('title') || '').trim(),
+        message: String(formData.get('message') || '').trim(),
+        time: new Date().toLocaleString('en-GB', {
+          day: '2-digit',
+          month: 'short',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        })
+      };
 
-      // Simple loading state
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
       btn.disabled = true;
 
-      // Simulate send (replace with real endpoint)
-      setTimeout(() => {
-        btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-        btn.style.background = 'linear-gradient(135deg, #2ecc71, #27ae60)';
-
-        contactForm.reset();
-
-        setTimeout(() => {
-          btn.innerHTML = originalHTML;
-          btn.style.background = '';
-          btn.disabled = false;
-        }, 3000);
-      }, 1500);
+      Promise.all([
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, contactParams),
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_AUTOREPLY_TEMPLATE_ID, {
+          ...contactParams,
+          to_email: contactParams.email
+        })
+      ])
+        .then(() => {
+          btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+          btn.style.background = 'linear-gradient(135deg, #2ecc71, #27ae60)';
+          contactForm.reset();
+        })
+        .catch((error) => {
+          console.error('EmailJS send failed:', error);
+          alert('Sorry, the message could not be sent right now. Please try again.');
+        })
+        .finally(() => {
+          setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.style.background = '';
+            btn.disabled = false;
+          }, 1500);
+        });
     });
   }
 
