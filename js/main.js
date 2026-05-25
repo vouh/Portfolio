@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
       EmailJS configuration
       Replace these with your actual EmailJS IDs.
       ============================================= */
-    const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
-    const EMAILJS_TEMPLATE_ID = 'YOUR_CONTACT_TEMPLATE_ID';
-    const EMAILJS_AUTOREPLY_TEMPLATE_ID = 'YOUR_AUTOREPLY_TEMPLATE_ID';
+      const EMAILJS_SERVICE_ID = 'service_9hxyh8q';
+      const EMAILJS_TEMPLATE_ID = 'template_4xnua3q';
+      const EMAILJS_AUTOREPLY_TEMPLATE_ID = 'template_t8gppyr';
 
   /* =============================================
      1. THEME TOGGLE (Dark / Light)
@@ -139,10 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       Promise.all([
         emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, contactParams),
-        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_AUTOREPLY_TEMPLATE_ID, {
-          ...contactParams,
-          to_email: contactParams.email
-        })
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_AUTOREPLY_TEMPLATE_ID, contactParams)
       ])
         .then(() => {
           btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
