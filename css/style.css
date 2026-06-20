@@ -820,10 +820,14 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
   padding: 0.7rem 0.85rem;
   font-weight: 600;
   transition: var(--transition);
+  word-break: break-all;
 }
 .quick-modal-links a:hover {
   background: rgba(122, 170, 206, 0.3);
   transform: translateY(-2px);
+}
+.quick-modal-links a i {
+  flex-shrink: 0;
 }
 .quick-modal-close {
   position: absolute;
